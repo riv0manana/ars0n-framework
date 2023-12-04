@@ -1,5 +1,5 @@
 # Use the official Kali Linux base image
-FROM kalilinux/kali-bleeding-edge
+FROM cisagov/docker-kali-ansible:latest
 
 #ARG from saas
 ARG SSH_PORT=
@@ -44,7 +44,6 @@ RUN mkdir /usr/src/ars0n
 WORKDIR /usr/src/ars0n
 COPY . .
 RUN python3 install.py
-RUN /usr/sbin/sshd -D
- 
+RUN /usr/sbin/sshd 
 # Start SSH service
 ENTRYPOINT ["./run.sh"]
