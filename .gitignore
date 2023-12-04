@@ -13,3 +13,5 @@ toolkit/http*
 toolkit/logs/*
 toolkit/wordlists/live_servers.txt
 toolkit/__pycache__
+config.bat
+node_modules
