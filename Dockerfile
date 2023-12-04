@@ -40,8 +40,6 @@ LABEL maintainer="Your Name noone@noone.com"
 LABEL description="Kali Linux image with nmap, tcpdump, and SSH"
 
 RUN yes | DEBIAN_FRONTEND=noninteractive apt install -yqq kali-linux-large
-
-WORKDIR /usr/src/app
 RUN python3 install.py
 RUN /usr/sbin/sshd 
  
