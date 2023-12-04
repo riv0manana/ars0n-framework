@@ -40,9 +40,11 @@ LABEL maintainer="Your Name noone@noone.com"
 LABEL description="Kali Linux image with nmap, tcpdump, and SSH"
 
 RUN yes | DEBIAN_FRONTEND=noninteractive apt install -yqq kali-linux-large
-RUN ls
+RUN mkdir /usr/src/ars0n
+WORKDIR /usr/src/ars0n
+COPY . .
 RUN python3 install.py
-RUN /usr/sbin/sshd 
+RUN /usr/sbin/sshd -D
  
 # Start SSH service
 ENTRYPOINT ["./run.sh"]
