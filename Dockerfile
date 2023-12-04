@@ -41,7 +41,7 @@ LABEL description="Kali Linux image with nmap, tcpdump, and SSH"
 
 RUN yes | DEBIAN_FRONTEND=noninteractive apt install -yqq kali-linux-large
 
-WORKDIR WORKDIR /usr/src/app
+WORKDIR /usr/src/app
 RUN python3 install.py
 RUN /usr/sbin/sshd 
  
