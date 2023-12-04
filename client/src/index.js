@@ -8,10 +8,12 @@ import './custom.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const ApiContext = createContext({
+const configApi = {
   flaskHost: process.env.REACT_APP_FLASK_API_HOST || 'http://localhost:5000',
   nodeHost: process.env.REACT_APP_NODE_API_HOST || 'http://localhost:8000',
-});
+}
+
+const ApiContext = createContext(configApi);
 
 export const useApi = () => {
   const api = useContext(ApiContext);
@@ -20,7 +22,7 @@ export const useApi = () => {
 
 root.render(
   <React.StrictMode>
-    <ApiContext.Provider>
+    <ApiContext.Provider value={configApi}>
       <App />
     </ApiContext.Provider>
   </React.StrictMode>
