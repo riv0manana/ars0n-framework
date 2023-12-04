@@ -3,8 +3,10 @@ import React, {useState, useEffect} from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';import GithubSearchForm from '../HelperComponents/GithubSearchForm';
 import GithubSearchResults from '../HelperComponents/GithubSearchResults';
+import { useApi } from '../..';
 
 const GithubSearch = props => {
+    const { flaskHost, nodeHost } = useApi();
 
 
     const notify = e => {
@@ -14,7 +16,7 @@ const GithubSearch = props => {
     const [formCompleted, setFormCompleted] = useState(false);
 
     useEffect(()=>{
-        axios.post('http://localhost:8000/api/fqdn', {_id:props.thisFqdn._id})
+        axios.post(`${nodeHost}/api/fqdn`, {_id:props.thisFqdn._id})
             .then(res=>{
                 const tempArr = res.data.recon.osint.GithubSearch;
                 if (tempArr.length > 0){
